@@ -8,7 +8,7 @@ use List::Util qw(sum);
 use DBI;
 use DBIx::Array::Session::Action;
 
-our $VERSION = '0.65';
+our $VERSION = '0.66';
 our $PACKAGE = __PACKAGE__;
 
 =head1 NAME

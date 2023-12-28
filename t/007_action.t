@@ -1,17 +1,21 @@
 # -*- perl -*-
 use strict;
 use warnings;
-use Test::More tests => 24;
+use Test::More tests => 23;
 
-BEGIN { use_ok( 'DBIx::Array::Connect' ); }
+BEGIN { use_ok( 'DBIx::Array' ); }
+
+local $@;
+eval {require DBIx::Array::Connect};
+my $error   = $@;
+my $connect = $ENV{"ORACLE_NICK_NAME"};
+my $skip    = $error && !$connect;
+
+SKIP: {
+  skip "DBIx::Array::Connect not installed or ORACLE_NICK_NAME not defined", 22 if $skip;
 
 my $dac = DBIx::Array::Connect->new ();
 isa_ok ($dac, 'DBIx::Array::Connect');
-
-my $connect=$ENV{"ORACLE_NICK_NAME"};
-SKIP: {
-  skip "ORACLE_NICK_NAME not defined", 22 unless $connect;
-
 my $dba=$dac->connect($connect);
 isa_ok ($dba, 'DBIx::Array');
 

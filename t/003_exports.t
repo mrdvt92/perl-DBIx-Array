@@ -24,7 +24,7 @@ my $csv=qq{COL1,COL2,COL3\r\n1,a,"Say ""Yes!"""\r\n2,b,"One, Two, or Three"\r\n3
 
 SKIP: {
   eval { require Text::CSV_XS };
-  skip "Text::CSV_XS not installed", 1 if $@;
+  skip "Text::CSV_XS not installed", 2 if $@;
 
   is(1,1, "Running Tests that depend on Text::CSV_XS");
 
@@ -69,7 +69,7 @@ my $xml=q{<?xml version='1.0' standalone='yes'?>
 
 SKIP: {
   eval { require XML::Simple };
-  skip "XML::Simple not installed", 1 if $@;
+  skip "XML::Simple not installed", 2 if $@;
 
   is(1,1, "Running Tests that depend on XML::Simple");
 
